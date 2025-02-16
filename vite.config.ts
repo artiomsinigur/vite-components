@@ -7,16 +7,19 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'fem-components',
+      name: 'remoteApp',
       filename: 'remoteEntry.js',
       exposes: {
-        './button': './src/components/button.tsx',
-        './input': './src/components/input.tsx',
+        './Button': './src/components/button.tsx',
+        './Input': './src/components/input.tsx',
       },
       shared: ['react', 'react-dom'],
     }),
   ],
   build: {
+    modulePreload: false,
     target: 'esnext',
+    minify: false,
+    cssCodeSplit: false,
   },
 });
